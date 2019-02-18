@@ -36,4 +36,9 @@ public class BoardHelper extends  HelperBase {
   public void selectCreateBoard() {
     click(By.cssSelector(".js-new-board"));
   }
+
+  public void selectPersonalBoard() {
+    WebElement personalBoards = wd.findElement(By.xpath("//*[@class='icon-lg icon-member']/../../.."));
+   personalBoards.findElement(By.xpath(".//*[@class='boards-page-board-section-list-item']")).click();
+  }
 }

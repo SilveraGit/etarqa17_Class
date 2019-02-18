@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.LoginTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-02-14T18:36:49" hostname="Lena-Toshiba" time="3.246">
+  <properties/>
+  <testcase name="testLogIn" classname="tests.LoginTest" time="3.246"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

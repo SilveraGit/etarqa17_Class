@@ -40,7 +40,7 @@ public class ApplicationManager {
     teamHelper = new TeamHelper(wd);
   }
 
-  public void stop() {
+    public void stop() {
     wd.quit();
   }
 
