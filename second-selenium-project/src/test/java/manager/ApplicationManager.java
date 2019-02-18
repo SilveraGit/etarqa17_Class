@@ -7,6 +7,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import tests.TestBase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +16,7 @@ public class ApplicationManager {
   SessionHelper sessionHelper;
   BoardHelper boardHelper;
   TeamHelper teamHelper;
-  WebDriver wd;
+  EventFiringWebDriver wd;
   String browser;
 
   public ApplicationManager(String browser) {
@@ -23,14 +25,16 @@ public class ApplicationManager {
 
   public void start() {
     if (browser.equals(BrowserType.CHROME)) {
-      wd= new ChromeDriver();
+      wd= new EventFiringWebDriver(new ChromeDriver());
     } else if (browser.equals(BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver();
+      wd = new EventFiringWebDriver(new FirefoxDriver());
     } else if (browser.equals(BrowserType.EDGE)){
-      wd = new EdgeDriver();
+      wd = new EventFiringWebDriver(new EdgeDriver());
     } else if (browser.equals(BrowserType.IE)){
-      wd = new InternetExplorerDriver();
+      wd = new EventFiringWebDriver(new InternetExplorerDriver());
     }
+
+  wd.register(new TestBase.MyListener());
 
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.manage().window().maximize();
