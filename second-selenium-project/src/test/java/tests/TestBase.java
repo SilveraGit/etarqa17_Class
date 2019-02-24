@@ -44,6 +44,7 @@ public class TestBase {
       } catch (IOException e) {
         e.printStackTrace();
       }
+      System.out.println("screenshot: "+screenshot);
          System.out.println("_____________________________________________________________");
     }
   }
