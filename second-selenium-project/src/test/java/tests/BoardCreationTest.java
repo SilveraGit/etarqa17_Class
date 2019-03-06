@@ -19,7 +19,7 @@ public class BoardCreationTest extends TestBase {
     app.getBoardHelper().clickTheCreateNewBoardOnTheEndOfList();
     app.getBoardHelper().addBoardTitle("newBoard" + System.currentTimeMillis());
     app.getBoardHelper().clickTheCreateButton();
-    app.returnToPreviousPage();
+    app.getNavigationHelper().returnToPreviousPage();
 
     int after = app.getBoardHelper().PersonalBoardsCount();
 
@@ -33,7 +33,7 @@ public class BoardCreationTest extends TestBase {
     app.getBoardHelper().selectCreateBoard();
     app.getBoardHelper().addBoardTitle("newBoard" + System.currentTimeMillis());
     app.getBoardHelper().clickTheCreateButton();
-    app.returnToPreviousPage();
+    app.getNavigationHelper().returnToPreviousPage();
 
   }
 }

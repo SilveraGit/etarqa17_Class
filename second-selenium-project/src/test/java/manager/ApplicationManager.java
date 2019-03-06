@@ -1,7 +1,6 @@
 package manager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,7 +15,9 @@ public class ApplicationManager {
   SessionHelper sessionHelper;
   BoardHelper boardHelper;
   TeamHelper teamHelper;
+  NavigationHelper navigationHelper;
   EventFiringWebDriver wd;
+
   String browser;
 
   public ApplicationManager(String browser) {
@@ -25,7 +26,7 @@ public class ApplicationManager {
 
   public void start() {
     if (browser.equals(BrowserType.CHROME)) {
-      wd= new EventFiringWebDriver(new ChromeDriver());
+      wd = new EventFiringWebDriver(new ChromeDriver());
     } else if (browser.equals(BrowserType.FIREFOX)) {
       wd = new EventFiringWebDriver(new FirefoxDriver());
     } else if (browser.equals(BrowserType.EDGE)){
@@ -36,12 +37,13 @@ public class ApplicationManager {
 
   wd.register(new TestBase.MyListener());
 
-    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wd.manage().window().maximize();
     openSite("https://trello.com");
     sessionHelper = new SessionHelper(wd);
     boardHelper = new BoardHelper(wd);
     teamHelper = new TeamHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
   }
 
     public void stop() {
@@ -50,11 +52,6 @@ public class ApplicationManager {
 
   public void openSite(String url) {
     wd.get(url);
-  }
-
-
-  public void returnToPreviousPage() {
-    wd.navigate().back();
   }
 
   public void clickOnPlusButtonOnHeader() {
@@ -71,5 +68,9 @@ public class ApplicationManager {
 
   public SessionHelper getSessionHelper() {
     return sessionHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }

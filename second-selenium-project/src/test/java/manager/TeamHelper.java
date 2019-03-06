@@ -17,6 +17,7 @@ public class TeamHelper extends HelperBase{
   }
 
   public void fillTeamCreationForm(Team team) {
+
     type(By.id("org-display-name"), team.getTeamName());
     type(By.id("org-desc"), team.getDescription());
   }
